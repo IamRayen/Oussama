@@ -1,0 +1,12 @@
+@use "./Styles/Colors" as color;
+@use "./Styles/Font" as font;
+@use "./Styles/Navbar";
+@use "./Styles/Landing";
+
+body{
+    margin: 0;
+    padding: 0;
+}
+.App{
+    position: relative;
+}
