@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logo from "../images/pdfresizer.com-pdf-crop.svg";
 import { Link, useNavigate } from "react-router-dom";
 
