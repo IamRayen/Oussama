@@ -14,8 +14,14 @@
 
 
 .navbar {
+    --size:25vh;
+
     font-family: font.$regular-font;
-    height: 25vh;
+    height: var(--size);
+    box-shadow: 0;
+    transition-property:box-shadow height ;
+    transition-timing-function: linear;
+    transition-duration: 0.8s;
     .logo {
         transform: scale(1.2);
         width: 30%;
@@ -53,4 +59,13 @@
             width: 100%;
         }
     }
+}
+.scrolled{
+    --size:15vh;
+    box-shadow: rgba(255, 255, 0,0.4) 0px 1px, rgba(255, 255, 0,0.3) 0px 2px, rgba(255, 255, 0, 0.2) 0px 3px, rgba(255, 255, 0, 0.1) 0px 4px, rgba(255, 255, 0, 0.05) 0px 5px;
+}
+.trans{
+    background-color: rgba(0, 33, 214,0.5);
+    box-shadow: none;
+    border-radius: 10px 10px 0 0;
 }

@@ -1,0 +1,20 @@
+@use "./Colors" as color;
+
+.contact-wrapper{
+    height: 100vh;
+    padding-top: 25vh;
+    position: relative;
+    .contact{
+        position: relative;
+        border-radius: 0 0 10px 10px;
+        height: 75vh;
+        background-color: rgba(0, 33, 214,0.5) ;
+        .ill{
+            position: absolute;
+            width: 35%;
+            height:85%;
+            right: 8%;
+            top: 0px;
+        }
+    }
+}

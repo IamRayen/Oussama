@@ -1,7 +1,9 @@
 @use "./Styles/Colors" as color;
 @use "./Styles/Font" as font;
 @use "./Styles/Navbar";
+@use "./Styles/Footer";
 @use "./Styles/Landing";
+@use "./Styles/Contact.scss";
 
 body{
     margin: 0;
