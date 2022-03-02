@@ -1,30 +1,39 @@
 import React, { useState } from "react";
 import logo from "../images/pdfresizer.com-pdf-crop.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { Offcanvas, ListGroup } from "react-bootstrap";
 
 const NavBar = () => {
-    
     //to make background color the same as text color (clarity reasons)
-    const trans = window.location.pathname === "/contact" ? "trans" :""
+    const trans = window.location.pathname === "/contact" ? "trans" : window.location.pathname === "/activités" ? "trans" : "";
 
     //to navigate and go to the desired div in the same time
     const navigate = useNavigate();
     const handleNavClick = async () => {
         navigate("/");
+        handleClose()
     };
-    
-    //to make navbar smaller after scrolling 
-    const handleScroll = () => {
-        setScrolled(window.scrollY >= 50 ? "scrolled" : "")
-    }
-    window.addEventListener("scroll",handleScroll,true)
-    const [scrolled, setScrolled] = useState("")
 
-    return ( 
-        <div className={`navbar container fixed-top ${scrolled} ${trans}`}>
+    //to make navbar smaller after scrolling
+    const handleScroll = () => {
+        setScrolled(window.scrollY >= 50 ? "scrolled" : "");
+    };
+    window.addEventListener("scroll", handleScroll, true);
+    const [scrolled, setScrolled] = useState("");
+
+    //offcanvas show state
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+        <div
+            className={`navbar container-fluid d-flex justify-content-around align-items-center fixed-top ${scrolled} ${trans}`}
+        >
             <img className="logo" src={logo} alt="IC" />
 
-            <nav className="navigations d-flex justify-content-evenly">
+            <nav className="navigations d-none d-md-flex flex-wrap justify-content-evenly">
                 <a
                     className="navigation"
                     href="#landing"
@@ -39,14 +48,53 @@ const NavBar = () => {
                 >
                     A Propos
                 </a>
-                <Link className="navigation" to="/activités">
+                <Link className="navigation" to="/activités" >
                     Activités
                 </Link>
                 <Link className="navigation" to="/contact">
                     Contact
                 </Link>
             </nav>
-            <hr />
+
+            <div type="button" className="d-md-none show-canvas-button ms-5">
+                <i
+                    className="bi bi-list"
+                    style={{ fontSize: "65px"}}
+                    onClick={handleShow}
+                ></i>
+            </div>
+            <Offcanvas style={{opacity:"0.6",width:"80%",backgroundColor:"yellow",height:"100vh"}} className="offcanvas" show={show} onHide={handleClose}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title className="fw-bold display-6">
+                        Menu
+                    </Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body className="offcanvas-body">
+                    <ListGroup className="p-2 offcanvas-navigations" style={{display:"flex",alignItems:"center",flexDirection:"column",justifyContent:"space-around",height:"60%"}}>
+                        <a
+                            style={{textDecoration:"none",fontWeight:"500",fontSize:"30px",color:"black"}}
+                            href="#landing"
+                            onClick={handleNavClick}
+                        >
+                            Accueil
+                        </a>
+                        <a
+                        style={{textDecoration:"none",fontWeight:"500",fontSize:"30px",color:"black"}}
+                            href="#a_propos"
+                            onClick={handleNavClick}
+                        >
+                            A Propos
+                        </a>
+                        <Link
+                        style={{textDecoration:"none",fontWeight:"500",fontSize:"30px",color:"black"}} to="activités" onClick={handleClose}>
+                            Activités
+                        </Link>
+                        <Link style={{textDecoration:"none",fontWeight:"500",fontSize:"30px",color:"black"}} to="contact" onClick={handleClose}>
+                            Contact
+                        </Link>
+                    </ListGroup>
+                </Offcanvas.Body>
+            </Offcanvas>
         </div>
     );
 };
