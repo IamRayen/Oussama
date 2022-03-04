@@ -72,34 +72,34 @@ const Presentation = () => {
     };
 
     const [equipe, setEquipe] = useState(equipeArr);
-    const [competence, setCompetence] = useState(null);
+    // const [competence, setCompetence] = useState(null);
 
     useEffect(() => {
-        const request = async () => {
-            try {
-                //fetching skills
-                const data = await Client.fetch(`*[_type=="Competence"]{
-                    image,
-                    nom,
-                    url
-                }`);
+        // const request = async () => {
+        //     try {
+        //         //fetching skills
+        //         const data = await Client.fetch(`*[_type=="Competence"]{
+        //             image,
+        //             nom,
+        //             url
+        //         }`);
 
-                //fetching team
-                const data2 = await Client.fetch(`*[_type=="Equipe"]{
-                    image,
-                    nom,
-                    description,
-                    date,
-                    linkedIn,
-                    facebook
-                }`);
+        //         //fetching team
+        //         const data2 = await Client.fetch(`*[_type=="Equipe"]{
+        //             image,
+        //             nom,
+        //             description,
+        //             date,
+        //             linkedIn,
+        //             facebook
+        //         }`);
 
-                setCompetence(data);
-                setEquipe(data2);
-            } catch (error) {
-                console.log(error);
-            }
-        };
+        //         setCompetence(data);
+        //         setEquipe(data2);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // };
         // request();
     }, []);
     console.log(equipe && equipe);
