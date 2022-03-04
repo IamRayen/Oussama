@@ -5,13 +5,18 @@ import { Offcanvas, ListGroup } from "react-bootstrap";
 
 const NavBar = () => {
     //to make background color the same as text color (clarity reasons)
-    const trans = window.location.pathname === "/contact" ? "trans" : window.location.pathname === "/activités" ? "trans" : "";
+    const trans =
+        window.location.pathname === "/contact"
+            ? "trans"
+            : window.location.pathname === "/activités"
+            ? "trans"
+            : "";
 
     //to navigate and go to the desired div in the same time
     const navigate = useNavigate();
     const handleNavClick = async () => {
         navigate("/");
-        handleClose()
+        handleClose();
     };
 
     //to make navbar smaller after scrolling
@@ -48,10 +53,13 @@ const NavBar = () => {
                 >
                     A Propos
                 </a>
-                <Link className="navigation" to="/activités" >
-                    Activités
+                <Link className="navigation" to="presentation">
+                    Présentation
                 </Link>
-                <Link className="navigation" to="/contact">
+                <Link className="navigation" to="actualités">
+                    Actualités
+                </Link>
+                <Link className="navigation" to="contact">
                     Contact
                 </Link>
             </nav>
@@ -59,37 +67,95 @@ const NavBar = () => {
             <div type="button" className="d-md-none show-canvas-button ms-5">
                 <i
                     className="bi bi-list"
-                    style={{ fontSize: "65px"}}
+                    style={{ fontSize: "65px" }}
                     onClick={handleShow}
                 ></i>
             </div>
-            <Offcanvas style={{opacity:"0.6",width:"80%",backgroundColor:"yellow",height:"100vh"}} className="offcanvas" show={show} onHide={handleClose}>
+            <Offcanvas
+                style={{
+                    opacity: "0.6",
+                    width: "80%",
+                    backgroundColor: "yellow",
+                    height: "100vh",
+                }}
+                className="offcanvas"
+                show={show}
+                onHide={handleClose}
+            >
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title className="fw-bold display-6">
                         Menu
                     </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body className="offcanvas-body">
-                    <ListGroup className="p-2 offcanvas-navigations" style={{display:"flex",alignItems:"center",flexDirection:"column",justifyContent:"space-around",height:"60%"}}>
+                    <ListGroup
+                        className="p-2 offcanvas-navigations"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            flexDirection: "column",
+                            justifyContent: "space-around",
+                            height: "60%",
+                        }}
+                    >
                         <a
-                            style={{textDecoration:"none",fontWeight:"500",fontSize:"30px",color:"black"}}
+                            style={{
+                                textDecoration: "none",
+                                fontWeight: "500",
+                                fontSize: "30px",
+                                color: "black",
+                            }}
                             href="#landing"
                             onClick={handleNavClick}
                         >
                             Accueil
                         </a>
                         <a
-                        style={{textDecoration:"none",fontWeight:"500",fontSize:"30px",color:"black"}}
+                            style={{
+                                textDecoration: "none",
+                                fontWeight: "500",
+                                fontSize: "30px",
+                                color: "black",
+                            }}
                             href="#a_propos"
                             onClick={handleNavClick}
                         >
                             A Propos
                         </a>
                         <Link
-                        style={{textDecoration:"none",fontWeight:"500",fontSize:"30px",color:"black"}} to="activités" onClick={handleClose}>
-                            Activités
+                            style={{
+                                textDecoration: "none",
+                                fontWeight: "500",
+                                fontSize: "30px",
+                                color: "black",
+                            }}
+                            to="/presentation"
+                            onClick={handleClose}
+                        >
+                            Présentation
                         </Link>
-                        <Link style={{textDecoration:"none",fontWeight:"500",fontSize:"30px",color:"black"}} to="contact" onClick={handleClose}>
+                        <Link
+                            style={{
+                                textDecoration: "none",
+                                fontWeight: "500",
+                                fontSize: "30px",
+                                color: "black",
+                            }}
+                            to="actualités"
+                            onClick={handleClose}
+                        >
+                            Actualités
+                        </Link>
+                        <Link
+                            style={{
+                                textDecoration: "none",
+                                fontWeight: "500",
+                                fontSize: "30px",
+                                color: "black",
+                            }}
+                            to="contact"
+                            onClick={handleClose}
+                        >
                             Contact
                         </Link>
                     </ListGroup>

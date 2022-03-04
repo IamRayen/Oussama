@@ -6,6 +6,7 @@ import LandingPage from './Views/LandingPage';
 import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
 import Contact from './Views/Contact';
+import Presentation from './Views/Presentation';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/contact" element={<Contact/>}/>
+        <Route path="/presentation" element={<Presentation/>}/>
       </Routes>
       <Footer/>
     </div>

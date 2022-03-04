@@ -26,7 +26,7 @@ const LandingPage = () => {
                     <div className="goTo">
                         <h2>Qui sommes Nous?</h2>
                         <a href="#a_propos" className="circle">
-                            <i class="bi fs-1 bi-arrow-down"></i>
+                            <i className="bi fs-1 bi-arrow-down"></i>
                         </a>
                     </div>
                 </div>
