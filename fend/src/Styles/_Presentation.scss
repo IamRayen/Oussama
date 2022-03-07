@@ -1,4 +1,37 @@
-.presentation-wrapper{
-    min-height:100vh;
+@use "./Colors" as color;
+
+.presentation-wrapper {
+    min-height: 100vh;
     padding: 25vh;
+    .competences-section {
+        .competences-wrapper {
+            overflow-x: hidden;
+            position: relative;
+            .sliderNav{
+                position: absolute;
+                cursor: pointer;
+                width: 100px;
+                height: 100px;
+                z-index: 1;
+            }
+            .sliderNav:hover{
+                color: color.$blueColor;
+                opacity: 0.5;
+            }
+            .sliderNavRight{
+                top: 35%;
+                right:0;
+            }
+            .sliderNavLeft{
+                top: 35%;
+                left: 0;
+            }
+            .competences{
+                border: 2px solid black;
+                width:max-content;
+                overflow-y:hidden;
+                transition: transform 0.5s ease;
+            }
+        }
+    }
 }

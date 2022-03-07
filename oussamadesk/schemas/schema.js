@@ -7,6 +7,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 //import schemas
 import équipe from './équipe'
 import compétences from './compétences'
+import projets from './projets'
+import RichText from './RichText'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -16,7 +18,9 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
+    RichText,
     équipe,
     compétences,
+    projets
   ]),
 })

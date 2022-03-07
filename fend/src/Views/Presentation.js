@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import Client from "../Client";
 import myConfiguredSanityClient from "../Client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -63,7 +63,7 @@ import { Card } from "react-bootstrap";
 //     },
 // ]
 
-const equipeArr = [{},{},{},{},{}]
+const equipeArr = [{}, {}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}];
 
 const Presentation = () => {
     const builder = imageUrlBuilder(myConfiguredSanityClient);
@@ -72,7 +72,7 @@ const Presentation = () => {
     };
 
     const [equipe, setEquipe] = useState(equipeArr);
-    const [competence, setCompetence] = useState(null);
+    const [competence, setCompetence] = useState(equipeArr);
 
     useEffect(() => {
         const request = async () => {
@@ -102,7 +102,27 @@ const Presentation = () => {
         };
         // request();
     }, []);
-    console.log(equipe && equipe);
+    
+    //translation for competences slider
+    const ref = useRef(null);
+
+    const [translation, setTranslation] = useState(0)
+    const [sliderstyle, setSliderstyle] = useState({
+        transform:`translateX(${translation}px)`
+    })
+    const moreTranslation = () => {
+        setTranslation(translation <= -ref.current.offsetWidth+1400 ? -ref.current.offsetWidth+1300 : translation - 200)
+
+        setSliderstyle({
+            transform:`translateX(${translation - 200}px)`
+        })
+    }
+    const lessTranslation = () => {
+        setTranslation(translation >= -200 ? 0 : translation + 200)
+        setSliderstyle({
+            transform:`translateX(${translation >= -200 ? 0 : translation + 200}px)`
+        })
+    }
 
     return (
         <div className="presentation-wrapper container-fluid border">
@@ -111,12 +131,18 @@ const Presentation = () => {
                 <div className="container-fluid d-flex justify-content-around flex-wrap border">
                     {equipe &&
                         equipe.map((el) => (
-                            <Card key={Math.random()} style={{ width: "180px",margin:"5px" }}>
+                            <Card
+                                key={Math.random()}
+                                style={{ width: "250px", margin: "5px" }}
+                            >
                                 <Card.Img
                                     variant="top"
-                                    src={el.image && urlFor(el.image).quality(60).url()}
+                                    src={
+                                        el.image &&
+                                        urlFor(el.image).quality(60).url()
+                                    }
                                     alt="picture"
-                                    style={{height:"220px"}}
+                                    style={{ height: "220px" }}
                                 />
                                 <Card.Body>
                                     <Card.Title>{el.nom}</Card.Title>
@@ -127,13 +153,15 @@ const Presentation = () => {
                                     <Card.Text>{el.description}</Card.Text>
                                     <Card.Link
                                         href={el.linkedIn}
-                                        rel="noopener noreferrer" target="_blank"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
                                     >
                                         <i className="bi bi-linkedin"></i>
                                     </Card.Link>
                                     <Card.Link
                                         href={el.facebook}
-                                        rel="noopener noreferrer" target="_blank"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
                                     >
                                         <i className="bi bi-facebook"></i>
                                     </Card.Link>
@@ -142,7 +170,46 @@ const Presentation = () => {
                         ))}
                 </div>
             </section>
-            <section className="competences container border"></section>
+            <section className="competences-section container border">
+                <h1>Competences</h1>
+
+                <div className="competences-wrapper container overflow-hidden border">
+                <div className="sliderNav sliderNavRight border d-flex justify-content-center align-items-center" onClick={moreTranslation}><i style={{fontSize:"80px"}} className="bi bi-caret-right"></i></div>
+                        <div className="sliderNav sliderNavLeft border d-flex justify-content-center align-items-center" onClick={lessTranslation}><i style={{fontSize:"80px"}} className="bi bi-caret-left"></i></div>
+                    <div style={sliderstyle} ref={ref} className="competences row">
+                        {competence &&
+                            competence.map((el) => (
+                                <Card
+                                    className="col"
+                                    key={Math.random()}
+                                    style={{ width: "200px", margin: "5px" }}
+                                >
+                                    <Card.Img
+                                        variant="top"
+                                        src={
+                                            el.image &&
+                                            urlFor(el.image).quality(60).url()
+                                        }
+                                        alt="picture"
+                                        style={{ height: "220px" }}
+                                    />
+                                    <Card.Body>
+                                        <Card.Title>Nom de Programme{el.nom}</Card.Title>
+                                        <hr />
+                                        <Card.Link
+                                            href={el.linkedIn}
+                                            rel="noopener noreferrer"
+                                            target="_blank"
+                                            style={{textDecoration:"none", color:"black"}}
+                                        >
+                                            <lead>learn more</lead><i class="bi ms-2 bi-arrow-right"></i>
+                                        </Card.Link>
+                                    </Card.Body>
+                                </Card>
+                            ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
