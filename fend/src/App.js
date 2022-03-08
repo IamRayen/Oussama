@@ -8,6 +8,7 @@ import Footer from './Components/Footer';
 import Contact from './Views/Contact';
 import Presentation from './Views/Presentation';
 import Projets from './Views/Projets';
+import Activite from './Views/Activite';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/presentation" element={<Presentation/>}/>
         <Route path="/projets" element={<Projets/>}></Route>
+        <Route path="/activite" element={<Activite/>}></Route>
       </Routes>
       <Footer/>
     </div>

@@ -1,0 +1,20 @@
+.activite-wrapper{
+    position: relative;
+    padding-top:25vh;    
+    .row{
+        height: 70vh;
+        border: 1px solid black;
+        .col{
+            border:1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .row1{
+        background-color: white;
+    }
+    .row2{
+        background-color: rgba(0, 33, 214,0.055) ;
+    }
+}

@@ -9,7 +9,10 @@ const NavBar = () => {
         window.location.pathname === "/contact"
             ? "trans"
             : window.location.pathname === "/presentation"
-            ? "trans" : "";
+            ? "trans"
+            : window.location.pathname === "/activite"
+            ? "trans"
+            : "";
 
     //to navigate and go to the desired div in the same time
     const navigate = useNavigate();
@@ -54,6 +57,9 @@ const NavBar = () => {
                 </a>
                 <Link className="navigation" to="presentation">
                     Présentation
+                </Link>
+                <Link className="navigation" to="activite">
+                    Domaines d'activités
                 </Link>
                 <Link className="navigation" to="projets">
                     Projets
@@ -132,6 +138,18 @@ const NavBar = () => {
                             onClick={handleClose}
                         >
                             Présentation
+                        </Link>
+                        <Link
+                            style={{
+                                textDecoration: "none",
+                                fontWeight: "500",
+                                fontSize: "30px",
+                                color: "black",
+                            }}
+                            to="/activite"
+                            onClick={handleClose}
+                        >
+                            Domaine d'activités
                         </Link>
                         <Link
                             style={{
