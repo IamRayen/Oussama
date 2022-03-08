@@ -1,69 +1,10 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Client from "../Client";
 import myConfiguredSanityClient from "../Client";
 import imageUrlBuilder from "@sanity/image-url";
 import { Card } from "react-bootstrap";
-
-// const equipeArr = [
-//     {
-//         "date": "2022-03-04",
-//         "description": "Serieux et intelligent.",
-//         "facebook": null,
-//         "image": {
-//             "_type": "image",
-//             "asset": {
-//                 "_ref": "image-bb7f6f4ee9c62df90347c545a90249e39b6a7589-2419x3225-jpg",
-//                 "_type": "reference"
-//             }
-//         },
-//         "linkedIn": "https://www.linkedin.com/in/rayenlabidi-full-stack-javascript-developer",
-//         "nom": "Mohamed Rayen Labidi"
-//     },
-//     {
-//         "date": "2022-03-04",
-//         "description": "Serieux et intelligent.",
-//         "facebook": null,
-//         "image": {
-//             "_type": "image",
-//             "asset": {
-//                 "_ref": "image-bb7f6f4ee9c62df90347c545a90249e39b6a7589-2419x3225-jpg",
-//                 "_type": "reference"
-//             }
-//         },
-//         "linkedIn": "https://www.linkedin.com/in/rayenlabidi-full-stack-javascript-developer",
-//         "nom": "Mohamed Rayen Labidi"
-//     },
-//     {
-//         "date": "2022-03-04",
-//         "description": "Serieux et intelligent.",
-//         "facebook": null,
-//         "image": {
-//             "_type": "image",
-//             "asset": {
-//                 "_ref": "image-bb7f6f4ee9c62df90347c545a90249e39b6a7589-2419x3225-jpg",
-//                 "_type": "reference"
-//             }
-//         },
-//         "linkedIn": "https://www.linkedin.com/in/rayenlabidi-full-stack-javascript-developer",
-//         "nom": "Mohamed Rayen Labidi"
-//     },
-//     {
-//         "date": "2022-03-04",
-//         "description": "Serieux et intelligent.",
-//         "facebook": null,
-//         "image": {
-//             "_type": "image",
-//             "asset": {
-//                 "_ref": "image-bb7f6f4ee9c62df90347c545a90249e39b6a7589-2419x3225-jpg",
-//                 "_type": "reference"
-//             }
-//         },
-//         "linkedIn": "https://www.linkedin.com/in/rayenlabidi-full-stack-javascript-developer",
-//         "nom": "Mohamed Rayen Labidi"
-//     },
-// ]
-
-const equipeArr = [{}, {}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}];
+import img from "../images/multi-tasking-ceo-handling-multiple-departments-with-ease-1862198.svg";
+import { useSwipeable } from 'react-swipeable';
 
 const Presentation = () => {
     const builder = imageUrlBuilder(myConfiguredSanityClient);
@@ -71,8 +12,8 @@ const Presentation = () => {
         return builder.image(source);
     };
 
-    const [equipe, setEquipe] = useState(equipeArr);
-    const [competence, setCompetence] = useState(equipeArr);
+    const [equipe, setEquipe] = useState(null);
+    const [competence, setCompetence] = useState(null);
 
     useEffect(() => {
         const request = async () => {
@@ -100,35 +41,79 @@ const Presentation = () => {
                 console.log(error);
             }
         };
-        // request();
+        request();
     }, []);
-    
+
     //translation for competences slider
     const ref = useRef(null);
 
-    const [translation, setTranslation] = useState(0)
+    const [translation, setTranslation] = useState(0);
     const [sliderstyle, setSliderstyle] = useState({
-        transform:`translateX(${translation}px)`
-    })
+        transform: `translateX(${translation}px)`,
+    });
     const moreTranslation = () => {
-        setTranslation(translation <= -ref.current.offsetWidth+1400 ? -ref.current.offsetWidth+1300 : translation - 200)
+        setTranslation(
+            translation <= -ref.current.offsetWidth + 500
+                ? -ref.current.offsetWidth + 500
+                : translation - 200
+        );
 
         setSliderstyle({
-            transform:`translateX(${translation - 200}px)`
-        })
-    }
+            transform: `translateX(${translation - 200}px)`,
+        });
+    };
     const lessTranslation = () => {
-        setTranslation(translation >= -200 ? 0 : translation + 200)
+        setTranslation(translation >= -200 ? 0 : translation + 200);
         setSliderstyle({
-            transform:`translateX(${translation >= -200 ? 0 : translation + 200}px)`
-        })
-    }
+            transform: `translateX(${
+                translation >= -200 ? 0 : translation + 200
+            }px)`,
+        });
+    };
+
+    //Sliding config
+    const handlers = useSwipeable({
+        onSwipedLeft: moreTranslation,
+        onSwipedRight: lessTranslation,
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true
+    });
 
     return (
-        <div className="presentation-wrapper container-fluid border">
-            <section className="equipe container border">
-                <h1>Equipe</h1>
-                <div className="container-fluid d-flex justify-content-around flex-wrap border">
+        <div className="presentation-wrapper container-fluid ">
+            <section className="presentation-generale container d-flex flex-column justify-content-center">
+                <div className="first-part container-fluid d-flex flex-wrap justify-content-around ">
+
+                    <p className="presentation-text align-self-center lead  ">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Mollitia esse fugit, natus sit doloribus, atque hic
+                        libero blanditiis incidunt perferendis accusamus saepe
+                        fuga porro nihil. Libero doloremque quam repellat! Hic!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Eius, vero odit. Aperiam, expedita nihil eos voluptatum
+                        soluta assumenda deleniti quisquam molestiae ab odit
+                        placeat praesentium sapiente vitae illo rem doloribus?
+                    </p>
+                    <img
+                        src={img}
+                        alt="ill"
+                        className="illustration-presentation"
+                    />
+
+                </div>
+                <div className="second-part container d-flex justify-content-center flex-wrap">
+                    <a href="#Equipe" className="GoToTeamBtn me-5 d-none d-sm-flex">
+                    <strong>Notre Equipe</strong><i className="bi bi-arrow-down ms-2"></i>
+                    </a>
+                    <a href="#Competences" className="GoToTeamBtn ms-5 d-none d-sm-flex">
+                    <strong>Nos Competences</strong><i className="bi ms-2 bi-arrow-down"></i>
+                    </a>
+                </div>
+            </section>
+            <hr className="mt-5" />
+            <section id="Equipe" className="equipe d-flex align-items-center justify-content-center flex-column container">
+                <h1 className="d-sm-none">Note Equipe <i className="bi bi-arrow-down"></i></h1>
+                <div className="container-fluid d-flex justify-content-around flex-wrap">
                     {equipe &&
                         equipe.map((el) => (
                             <Card
@@ -139,10 +124,9 @@ const Presentation = () => {
                                     variant="top"
                                     src={
                                         el.image &&
-                                        urlFor(el.image).quality(60).url()
+                                        urlFor(el.image).width(250).height(250).quality(60).url()
                                     }
                                     alt="picture"
-                                    style={{ height: "220px" }}
                                 />
                                 <Card.Body>
                                     <Card.Title>{el.nom}</Card.Title>
@@ -170,39 +154,65 @@ const Presentation = () => {
                         ))}
                 </div>
             </section>
-            <section className="competences-section container border">
-                <h1>Competences</h1>
+            <hr/>
+            <section id="Competences" className="competences-section d-flex align-items-center justify-content-center flex-column container-fluid">
+                <h1>Nos Competences <i className="bi d-sm-none bi-arrow-left"></i><i className="bi d-sm-none bi-arrow-right"></i></h1>
 
-                <div className="competences-wrapper container overflow-hidden border">
-                <div className="sliderNav sliderNavRight border d-flex justify-content-center align-items-center" onClick={moreTranslation}><i style={{fontSize:"80px"}} className="bi bi-caret-right"></i></div>
-                        <div className="sliderNav sliderNavLeft border d-flex justify-content-center align-items-center" onClick={lessTranslation}><i style={{fontSize:"80px"}} className="bi bi-caret-left"></i></div>
-                    <div style={sliderstyle} ref={ref} className="competences row">
+                <div  {...handlers} className="competences-wrapper container-fluid overflow-hidden">
+                    <div
+                        className="sliderNav sliderNavRight d-flex justify-content-center align-items-center"
+                        onClick={moreTranslation}
+                    >
+                        <i
+                            style={{ fontSize: "80px" }}
+                            className="bi d-none d-sm-block bi-caret-right"
+                        ></i>
+                    </div>
+                    <div
+                        className="sliderNav sliderNavLeft d-flex justify-content-center align-items-center"
+                        onClick={lessTranslation}
+                    >
+                        <i
+                            style={{ fontSize: "80px" }}
+                            className="bi d-none d-sm-block bi-caret-left"
+                        ></i>
+                    </div>
+                    <div
+                        style={sliderstyle}
+                        ref={ref}
+                        className="competences row"
+                    >
                         {competence &&
                             competence.map((el) => (
                                 <Card
                                     className="col"
                                     key={Math.random()}
-                                    style={{ width: "200px", margin: "5px" }}
+                                    style={{ width: "250px", margin: "5px" }}
                                 >
                                     <Card.Img
                                         variant="top"
                                         src={
                                             el.image &&
-                                            urlFor(el.image).quality(60).url()
+                                            urlFor(el.image).width(250).height(250).quality(60).url()
                                         }
                                         alt="picture"
-                                        style={{ height: "220px" }}
                                     />
                                     <Card.Body>
-                                        <Card.Title>Nom de Programme{el.nom}</Card.Title>
+                                        <Card.Title>
+                                            {el.nom}
+                                        </Card.Title>
                                         <hr />
                                         <Card.Link
-                                            href={el.linkedIn}
+                                            href={el.url}
                                             rel="noopener noreferrer"
                                             target="_blank"
-                                            style={{textDecoration:"none", color:"black"}}
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "black",
+                                            }}
                                         >
-                                            <lead>learn more</lead><i class="bi ms-2 bi-arrow-right"></i>
+                                            <lead>learn more</lead>
+                                            <i class="bi ms-2 bi-arrow-right"></i>
                                         </Card.Link>
                                     </Card.Body>
                                 </Card>
@@ -210,6 +220,7 @@ const Presentation = () => {
                     </div>
                 </div>
             </section>
+            <hr />
         </div>
     );
 };
