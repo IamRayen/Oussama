@@ -1,19 +1,58 @@
 import React, { useState, useEffect, useRef } from "react";
 import Client from "../Client";
-import myConfiguredSanityClient from "../Client";
-import imageUrlBuilder from "@sanity/image-url";
+// import myConfiguredSanityClient from "../Client";
+// import imageUrlBuilder from "@sanity/image-url";
 import { Card } from "react-bootstrap";
 import img from "../images/multi-tasking-ceo-handling-multiple-departments-with-ease-1862198.svg";
-import { useSwipeable } from 'react-swipeable';
+import { useSwipeable } from "react-swipeable";
+import placeH from "../images/placeholder.png";
 
 const Presentation = () => {
-    const builder = imageUrlBuilder(myConfiguredSanityClient);
-    const urlFor = (source) => {
-        return builder.image(source);
-    };
+    const ghostArray = [
+        {
+            image: placeH,
+            nom: "Nom",
+            description:
+                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+        },
+        {
+            image: placeH,
+            nom: "Nom",
+            description:
+                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+        },
+        {
+            image: placeH,
+            nom: "Nom",
+            description:
+                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+        },
+        {
+            image: placeH,
+            nom: "Nom",
+            description:
+                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+        },
+        {
+            image: placeH,
+            nom: "Nom",
+            description:
+                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+        },
+        {
+            image: placeH,
+            nom: "Nom",
+            description:
+                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+        },
+    ];
+    // const builder = imageUrlBuilder(myConfiguredSanityClient);
+    // const urlFor = (source) => {
+    //     return builder.image(source);
+    // };
 
-    const [equipe, setEquipe] = useState(null);
-    const [competence, setCompetence] = useState(null);
+    const [equipe, setEquipe] = useState(ghostArray);
+    const [competence, setCompetence] = useState(ghostArray);
 
     useEffect(() => {
         const request = async () => {
@@ -76,14 +115,13 @@ const Presentation = () => {
         onSwipedLeft: moreTranslation,
         onSwipedRight: lessTranslation,
         preventDefaultTouchmoveEvent: true,
-        trackMouse: true
+        trackMouse: true,
     });
 
     return (
         <div className="presentation-wrapper container-fluid ">
             <section className="presentation-generale container d-flex flex-column justify-content-center">
                 <div className="first-part container-fluid d-flex flex-wrap justify-content-around ">
-
                     <p className="presentation-text align-self-center lead  ">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Mollitia esse fugit, natus sit doloribus, atque hic
@@ -99,20 +137,35 @@ const Presentation = () => {
                         alt="ill"
                         className="illustration-presentation"
                     />
-
                 </div>
                 <div className="second-part container d-flex justify-content-center flex-wrap">
-                    <a href="#Equipe" className="GoToTeamBtn me-5 d-none d-sm-flex">
-                    <strong>Notre Equipe</strong><i className="bi bi-arrow-down ms-2"></i>
+                    <a
+                        href="#Equipe"
+                        className="GoToTeamBtn me-5 d-none d-sm-flex"
+                    >
+                        <strong>Notre Equipe</strong>
+                        <i className="bi bi-arrow-down ms-2"></i>
                     </a>
-                    <a href="#Competences" className="GoToTeamBtn ms-5 d-none d-sm-flex">
-                    <strong>Nos Competences</strong><i className="bi ms-2 bi-arrow-down"></i>
+                    <a
+                        href="#Competences"
+                        className="GoToTeamBtn ms-5 d-none d-sm-flex"
+                    >
+                        <strong>Nos Competences</strong>
+                        <i className="bi ms-2 bi-arrow-down"></i>
                     </a>
                 </div>
             </section>
             <hr className="mt-5" />
-            <section id="Equipe" className="equipe d-flex align-items-center justify-content-center flex-column container">
-                <h1 className="d-sm-none">Note Equipe <i className="bi bi-arrow-down"></i></h1>
+            <section
+                id="Equipe"
+                className="equipe d-flex align-items-center justify-content-center flex-column container"
+            >
+                <h1 className="d-sm-none">
+                    Note Equipe <i className="bi bi-arrow-down"></i>
+                </h1>
+                <h1 className="d-none my-4 d-sm-block">
+                    Equipe<i className="bi bi-arrow-down"></i>
+                </h1>
                 <div className="container-fluid d-flex justify-content-around flex-wrap">
                     {equipe &&
                         equipe.map((el) => (
@@ -124,7 +177,8 @@ const Presentation = () => {
                                     variant="top"
                                     src={
                                         el.image &&
-                                        urlFor(el.image).width(250).height(250).quality(60).url()
+                                        // urlFor(el.image).width(250).height(250).quality(60).url()
+                                        el.image
                                     }
                                     alt="picture"
                                 />
@@ -154,11 +208,21 @@ const Presentation = () => {
                         ))}
                 </div>
             </section>
-            <hr/>
-            <section id="Competences" className="competences-section d-flex align-items-center justify-content-center flex-column container-fluid">
-                <h1>Nos Competences <i className="bi d-sm-none bi-arrow-left"></i><i className="bi d-sm-none bi-arrow-right"></i></h1>
+            <hr />
+            <section
+                id="Competences"
+                className="competences-section d-flex align-items-center justify-content-center flex-column container-fluid"
+            >
+                <h1>
+                    Nos Competences{" "}
+                    <i className="bi d-sm-none bi-arrow-left"></i>
+                    <i className="bi d-sm-none bi-arrow-right"></i>
+                </h1>
 
-                <div  {...handlers} className="competences-wrapper container-fluid overflow-hidden">
+                <div
+                    {...handlers}
+                    className="competences-wrapper container-fluid overflow-hidden"
+                >
                     <div
                         className="sliderNav sliderNavRight d-flex justify-content-center align-items-center"
                         onClick={moreTranslation}
@@ -193,14 +257,13 @@ const Presentation = () => {
                                         variant="top"
                                         src={
                                             el.image &&
-                                            urlFor(el.image).width(250).height(250).quality(60).url()
+                                            // urlFor(el.image).width(250).height(250).quality(60).url()
+                                            el.image
                                         }
                                         alt="picture"
                                     />
                                     <Card.Body>
-                                        <Card.Title>
-                                            {el.nom}
-                                        </Card.Title>
+                                        <Card.Title>{el.nom}</Card.Title>
                                         <hr />
                                         <Card.Link
                                             href={el.url}
@@ -211,8 +274,8 @@ const Presentation = () => {
                                                 color: "black",
                                             }}
                                         >
-                                            <lead>learn more</lead>
-                                            <i class="bi ms-2 bi-arrow-right"></i>
+                                            <span>learn more</span>
+                                            <i className="bi ms-2 bi-arrow-right"></i>
                                         </Card.Link>
                                     </Card.Body>
                                 </Card>
