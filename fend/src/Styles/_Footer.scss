@@ -5,11 +5,7 @@
     min-height: 200px;
     color: #4b4c4d;
     .footer {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        border: 2px solid black;
+        position: relative;
         .social {
             display: flex;
             flex-wrap: wrap;
@@ -39,6 +35,7 @@
         }
         .list-inline {
             height: 180px;
+            min-width: 300px;
             display: flex;
             flex-wrap: wrap;
             flex-direction: column;
@@ -65,7 +62,6 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                position: relative;
                 margin-top: 15px;
                 text-align: center;
                 font-size: 15px;
