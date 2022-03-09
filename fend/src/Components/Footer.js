@@ -4,14 +4,14 @@ const Footer = () => {
     return (
         <div className="footer-basic container-fluid">
             <footer className="footer container-xl">
-                <div className="social">
+                <div className="social container">
                     <i className="btn btn-lg bi bi-linkedin"></i>
                     <i className="btn btn-lg bi bi-skype"></i>
                     <i className=" btn btn-lg bi bi-facebook"></i>
                     <i className="btn btn-lg bi bi-twitter"></i>
                     <i className="btn btn-lg bi bi-instagram"></i>
                 </div>
-                <ul className="list-inline">
+                <ul className="list-inline container">
                     <li className="btn list-inline-item">
                         <a href="#landing" className="link">
                             Acceuil
@@ -43,7 +43,7 @@ const Footer = () => {
                         </a>
                     </li>
                 </ul>
-                <div className="copyright-wrapper">
+                <div className="copyright-wrapper container">
                 <p className="copyright">Oussama Habibi © 2022</p>
                 <p className="copyright">
                     Website made by{" "}
