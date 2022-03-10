@@ -14,6 +14,8 @@
 
 .navbar {
     --size: 25vh;
+    --scale:1;
+    --hoverscale:1.18;
 
     position: relative;
     font-family: font.$regular-font;
@@ -32,8 +34,8 @@
         height: 100%;
         .navigation {
             position: relative;
-            transform: scale(1);
-            transition: transform 0.1s ease-in-out;
+            transform: scale(var(--scale));
+            transition: transform 0.3s ease-in-out;
             margin-left: 2px;
             text-decoration: none;
             color: white;
@@ -53,7 +55,7 @@
             transition: width 0.25s ease-in-out;
         }
         .navigation:hover {
-            transform: scale(1.18);
+            transform: scale(var(--hoverscale));
         }
         .navigation:hover:before {
             width: 100%;
@@ -65,6 +67,9 @@
 }
 .scrolled {
     --size: 15vh;
+    --scale:0.75;
+    --hoverscale:1;
+
     box-shadow: rgba(255, 255, 0, 0.4) 0px 1px, rgba(255, 255, 0, 0.3) 0px 2px,
         rgba(255, 255, 0, 0.2) 0px 3px, rgba(255, 255, 0, 0.1) 0px 4px,
         rgba(255, 255, 0, 0.05) 0px 5px;
