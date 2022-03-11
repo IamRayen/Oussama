@@ -141,14 +141,14 @@ const Presentation = () => {
                 <div className="second-part container d-flex justify-content-center flex-wrap">
                     <a
                         href="#Equipe"
-                        className="GoToTeamBtn me-5 d-none d-sm-flex"
+                        className="GoToTeamBtn me-lg-5 d-none d-lg-flex"
                     >
                         <strong>Notre Equipe</strong>
                         <i className="bi bi-arrow-down ms-2"></i>
                     </a>
                     <a
                         href="#Competences"
-                        className="GoToTeamBtn ms-5 d-none d-sm-flex"
+                        className="GoToTeamBtn ms-lg-5 d-none d-lg-flex"
                     >
                         <strong>Nos Competences</strong>
                         <i className="bi ms-2 bi-arrow-down"></i>
@@ -160,19 +160,21 @@ const Presentation = () => {
                 id="Equipe"
                 className="equipe d-flex align-items-center justify-content-center flex-column container"
             >
-                <h1 className="d-sm-none">
+                <h1 className="d-lg-none">
                     Note Equipe <i className="bi bi-arrow-down"></i>
                 </h1>
-                <h1 className="d-none my-4 d-sm-block">
+                <h1 className="d-none my-4 d-lg-block">
                     Equipe<i className="bi bi-arrow-down"></i>
                 </h1>
-                <div className="container-fluid d-flex justify-content-around flex-wrap">
+                <div className="container-fluid members d-flex justify-content-center flex-wrap">
                     {equipe &&
                         equipe.map((el) => (
                             <Card
                                 key={Math.random()}
-                                style={{ width: "250px", margin: "5px" }}
+                                style={{ width: "250px", margin: "5px",backgroundColor:"rgba(0, 33, 214,0.2)" }}
+                                className="Card mx-4 my-2"
                             >
+                                <Card.Text className="desc p-1 lead">{el.description}</Card.Text>
                                 <Card.Img
                                     variant="top"
                                     src={
@@ -180,7 +182,10 @@ const Presentation = () => {
                                         // urlFor(el.image).width(250).height(250).quality(60).url()
                                         el.image
                                     }
+                                    style={{borderRadius:"50%",height:"90%"}}
                                     alt="picture"
+                                    className="CardImg"
+                                    
                                 />
                                 <Card.Body>
                                     <Card.Title>{el.nom}</Card.Title>
@@ -188,7 +193,6 @@ const Presentation = () => {
                                     <Card.Subtitle>
                                         Parmi nous depuis le {el.date}
                                     </Card.Subtitle>
-                                    <Card.Text>{el.description}</Card.Text>
                                     <Card.Link
                                         href={el.linkedIn}
                                         rel="noopener noreferrer"
@@ -215,8 +219,8 @@ const Presentation = () => {
             >
                 <h1>
                     Nos Competences{" "}
-                    <i className="bi d-sm-none bi-arrow-left"></i>
-                    <i className="bi d-sm-none bi-arrow-right"></i>
+                    <i className="bi d-lg-none bi-arrow-left"></i>
+                    <i className="bi d-lg-none bi-arrow-right"></i>
                 </h1>
 
                 <div
@@ -229,7 +233,7 @@ const Presentation = () => {
                     >
                         <i
                             style={{ fontSize: "80px" }}
-                            className="bi d-none d-sm-block bi-caret-right"
+                            className="bi d-none d-lg-block bi-caret-right"
                         ></i>
                     </div>
                     <div
@@ -238,7 +242,7 @@ const Presentation = () => {
                     >
                         <i
                             style={{ fontSize: "80px" }}
-                            className="bi d-none d-sm-block bi-caret-left"
+                            className="bi d-none d-lg-block bi-caret-left"
                         ></i>
                     </div>
                     <div
@@ -272,6 +276,7 @@ const Presentation = () => {
                                             style={{
                                                 textDecoration: "none",
                                                 color: "black",
+                                                cursor:"pointer"
                                             }}
                                         >
                                             <span>learn more</span>

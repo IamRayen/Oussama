@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Client from "../Client";
 
 const Projets = () => {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const Navigate = useNavigate();
+
     const ghostArray = [
         {
             date: "2022",
@@ -67,7 +72,7 @@ const Projets = () => {
             date: "2022",
             image: {
                 asset: {
-                    url: "https://source.unsplash.com/1600x900/?nature",
+                    url: "https://source.unsplash.com/1000x900/?nature",
                 },
             },
             mission: "Loreum Ipsum kkkkkkk",
@@ -91,7 +96,7 @@ const Projets = () => {
             date: "2016",
             image: {
                 asset: {
-                    url: "https://source.unsplash.com/1600x900/?sport",
+                    url: "https://source.unsplash.com/500x500/?car",
                 },
             },
             mission: "Loreum Ipsum kkkkkkk",
@@ -103,7 +108,7 @@ const Projets = () => {
             date: "2015",
             image: {
                 asset: {
-                    url: "https://source.unsplash.com/1600x900/?basketball",
+                    url: "https://source.unsplash.com/1600x900/?love",
                 },
             },
             mission: "Loreum Ipsum kkkkkkk",
@@ -133,38 +138,65 @@ const Projets = () => {
                     date,
                 }`);
                 setProjects(data);
-                console.log(data)
+                console.log(data);
             } catch (error) {
                 console.log(error);
             }
         };
+        //request data from sanity
         request();
+
+        //change ghostArray to the data when you work with sanity later
+        const ghostArray = true
+        const checkLoad = () => (ghostArray ? setIsLoaded(true) : null);
+
+        checkLoad();
     }, []);
+
 
     return (
         <div className="Projet-wrapper border">
-            <div className="Projets container-xl d-flex flex-wrap justify-content-center p-0">
-                {projects.map((el) => {
-                    return (
-                        <div key={Math.random()} className=" project-wrapper flex-fill " style={{height: "440px",
-                        width: `${
-                            Math.random() * (550 - 350) + 350
-                        }px`,}}>
-                        <div
-                            className="Project "
-                            style={{
-                                backgroundImage: `url(${el.image.asset.url})`,
-                                backgroundSize: "cover",
-                                height: "440px",
-                            }}
-                        ></div>
-                            <h4 className="mission display-6 m-2 p-1">{el.mission}</h4>
-                            <p className="date border p-4 m-0">{el.date}</p>
-                        
-                        </div>
-                    );
-                })}
-            </div>
+            {isLoaded && (
+                <div className="Projets container-xl d-flex flex-wrap justify-content-center p-0">
+                    {projects
+                        //make the sort by year function
+                        .sort((a, b) => {
+                            return parseInt(b.date) - parseInt(a.date);
+                        })
+                        .map((el) => {
+                            return (
+                                <div
+                                    key={Math.random()}
+                                    onClick={() => {
+                                        Navigate(`/projets/${el.slug.current}`);
+                                    }}
+                                    className=" project-wrapper flex-fill"
+                                    style={{
+                                        height: "440px",
+                                        width: `${
+                                            Math.random() * (550 - 350) + 350
+                                        }px`,
+                                    }}
+                                >
+                                    <div
+                                        className="Project "
+                                        style={{
+                                            backgroundImage: `url(${el.image.asset.url})`,
+                                            backgroundSize: "cover",
+                                            height: "440px",
+                                        }}
+                                    ></div>
+                                    <h4 className="mission display-6 m-2 p-1">
+                                        {el.mission}
+                                    </h4>
+                                    <p className="date border p-4 m-0">
+                                        {el.date}
+                                    </p>
+                                </div>
+                            );
+                        })}
+                </div>
+            )}
         </div>
     );
 };

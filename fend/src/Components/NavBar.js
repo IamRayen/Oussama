@@ -7,13 +7,33 @@ const NavBar = () => {
     //to make background color the same as text color (clarity reasons)
     const trans =
         window.location.pathname === "/contact"
-            ? "trans"
+            ? "trans contact"
             : window.location.pathname === "/presentation"
-            ? "trans"
+            ? "trans presentation"
             : window.location.pathname === "/activite"
-            ? "trans"
+            ? "trans activites"
             : "";
-
+    //to make navbar tell you where you are
+    const onContact =
+        window.location.pathname === "/contact"
+            ? "contact"
+            : "";
+    const onPresentation =
+            window.location.pathname === "/presentation"
+            ? "presentation"
+            : "";
+    const onActivites =
+            window.location.pathname === "/activite"
+            ? "activites"
+            : "";
+    const onAccueil =
+            window.location.pathname === "/"
+            ? "accueil"
+            : "";
+    const onProjets =
+            window.location.pathname === "/projets"
+            ? "projets"
+            : "";
     //to navigate and go to the desired div in the same time
     const navigate = useNavigate();
     const handleNavClick = async () => {
@@ -38,38 +58,31 @@ const NavBar = () => {
         <div
             className={`navbar container-fluid d-flex justify-content-around align-items-center fixed-top ${scrolled} ${trans}`}
         >
-            <img className="logo" src={logo} alt="IC" />
+            <img type="button" onClick={()=>navigate("/")} className="logo" src={logo} alt="IC" />
 
-            <nav className="navigations d-none d-md-flex flex-wrap justify-content-evenly">
+            <nav className="navigations d-none d-lg-flex flex-wrap justify-content-evenly">
                 <a
-                    className="navigation"
+                    className={`navigation ${onAccueil}`}
                     href="#landing"
                     onClick={handleNavClick}
                 >
                     Accueil
                 </a>
-                <a
-                    className="navigation"
-                    href="#a_propos"
-                    onClick={handleNavClick}
-                >
-                    A Propos
-                </a>
-                <Link className="navigation" to="presentation">
+                <Link className={`navigation ${onPresentation}`} to="presentation">
                     Présentation
                 </Link>
-                <Link className="navigation" to="activite">
+                <Link className={`navigation ${onActivites}`} to="activite">
                     Domaines d'activités
                 </Link>
-                <Link className="navigation" to="projets">
+                <Link className={`navigation ${onProjets}`} to="projets">
                     Projets
                 </Link>
-                <Link className="navigation" to="contact">
+                <Link className={`navigation ${onContact}`} to="contact">
                     Contact
                 </Link>
             </nav>
 
-            <div type="button" className="d-md-none show-canvas-button ms-5">
+            <div type="button" className="d-lg-none show-canvas-button ms-5">
                 <i
                     className="bi bi-list"
                     style={{ fontSize: "65px" }}

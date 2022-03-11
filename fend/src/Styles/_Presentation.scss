@@ -36,8 +36,37 @@
             }
         }
     }
-    .equipe{
-        padding-top:15vh;
+    .equipe {
+        padding-top: 15vh;
+        .members {
+            .Card{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            .desc {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                height: 225px;
+                width: 90%;
+                opacity: 0;
+                background-color: whitesmoke;
+                transition: opacity 0.3s ease;
+                border-radius: 50%;
+                margin-top: 5px;
+                cursor: pointer;
+            }
+            .CardImg{
+                width: 90%;
+                margin-top: 5px;
+            }
+            .desc:hover {
+                opacity: 1;
+            }
+        }}
     }
     .competences-section {
         min-height: 100vh;
@@ -73,7 +102,7 @@
     }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 567px) {
     .presentation-wrapper {
         .presentation-generale {
             position: relative;
@@ -86,7 +115,17 @@
                 }
                 .presentation-text {
                     width: 100%;
-                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    .presentation-wrapper {
+        .presentation-generale {
+            .first-part {
+                .presentation-text {
+                    width: 100%;
                 }
             }
         }
