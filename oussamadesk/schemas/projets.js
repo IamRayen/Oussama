@@ -1,7 +1,7 @@
 export default {
     type: "document",
-    title: "projets",
-    name: "Projets",
+    title: "References",
+    name: "References",
     fields: [
         {
             name: "image",
@@ -19,14 +19,9 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
-            title: "Slug",
-            name: "slug",
-            type: "slug",
-            options: {
-                source: "mission",
-                maxLength: 200,
-                slugify: (input) => input.toLowerCase().replace(/\s+/g, "-"),
-            },
+            name: "maitre",
+            title: "Maitre d'ouvrage",
+            type: "string",
         },
         {
             name: "lieu",
@@ -40,11 +35,6 @@ export default {
             options: {
                 dateFormat: "Y",
             },
-        },
-        {
-            name: "description",
-            title: "Description",
-            type: "richtext",
         },
     ],
 };

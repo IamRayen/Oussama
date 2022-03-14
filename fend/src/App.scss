@@ -7,11 +7,13 @@
 @use "./Styles/Presentation";
 @use "./Styles/Projets";
 @use "./Styles/Activite";
+@use "./Styles/TestCarousel";
 
 body{
     margin: 0;
     padding: 0;
 }
+
 .App{
     position: relative;
 }

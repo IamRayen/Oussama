@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Client from "../Client";
 
 const Projets = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
-    const Navigate = useNavigate();
 
     const ghostArray = [
         {
@@ -15,7 +13,8 @@ const Projets = () => {
                     url: "https://cdn.sanity.io/images/ziue68m6/production/6eccfeeffdd798efab4ebcbd9b17d2ce563ab4d8-5314x3596.jpg",
                 },
             },
-            mission: "Loreum Ipsum kkkkkkk",
+            mission: "Loreum Ipsum kkkkkkk PPPPPPPP",
+            maitre:"loreum Maitre MMMMMMMM",
             slug: {
                 current: "loreum-ipsum-kkkkkkk",
             },
@@ -28,6 +27,7 @@ const Projets = () => {
                 },
             },
             mission: "Loreum Ipsum kkkkkkk",
+            maitre:"loreum Maitre MMMMMMMM",
             slug: {
                 current: "loreum-ipsum-kkkkkkk",
             },
@@ -40,6 +40,7 @@ const Projets = () => {
                 },
             },
             mission: "Loreum Ipsum kkkkkkk",
+            maitre:"loreum Maitre MMMMMMMM",
             slug: {
                 current: "loreum-ipsum-kkkkkkk",
             },
@@ -52,6 +53,7 @@ const Projets = () => {
                 },
             },
             mission: "Loreum Ipsum kkkkkkk",
+            maitre:"loreum Maitre MMMMMMMM",
             slug: {
                 current: "loreum-ipsum-kkkkkkk",
             },
@@ -64,6 +66,7 @@ const Projets = () => {
                 },
             },
             mission: "Loreum Ipsum kkkkkkk",
+            maitre:"loreum Maitre MMMMMMMM",
             slug: {
                 current: "loreum-ipsum-kkkkkkk",
             },
@@ -124,7 +127,7 @@ const Projets = () => {
         const request = async () => {
             try {
                 //fetching projects
-                const data = await Client.fetch(`*[_type=="Projets"]{
+                const data = await Client.fetch(`*[_type=="References"]{
                     image{
                         asset ->{
                             _id,
@@ -132,9 +135,7 @@ const Projets = () => {
                         }
                     },
                     mission,
-                    slug{
-                        current
-                    },
+                    maitre,
                     date,
                 }`);
                 setProjects(data);
@@ -167,9 +168,6 @@ const Projets = () => {
                             return (
                                 <div
                                     key={Math.random()}
-                                    onClick={() => {
-                                        Navigate(`/projets/${el.slug.current}`);
-                                    }}
                                     className=" project-wrapper flex-fill"
                                     style={{
                                         height: "440px",
@@ -188,6 +186,8 @@ const Projets = () => {
                                     ></div>
                                     <h4 className="mission display-6 m-2 p-1">
                                         {el.mission}
+                                        <br />
+                                        <span className="h5">{el.maitre}</span>
                                     </h4>
                                     <p className="date border p-4 m-0">
                                         {el.date}

@@ -12,6 +12,8 @@ const NavBar = () => {
             ? "trans presentation"
             : window.location.pathname === "/activite"
             ? "trans activites"
+            : window.location.pathname === "/"
+            ? "landingPage"
             : "";
     //to make navbar tell you where you are
     const onContact =
@@ -72,17 +74,17 @@ const NavBar = () => {
                     Présentation
                 </Link>
                 <Link className={`navigation ${onActivites}`} to="activite">
-                    Domaines d'activités
+                    Domaines d'Expertise
                 </Link>
                 <Link className={`navigation ${onProjets}`} to="projets">
-                    Projets
+                    References
                 </Link>
                 <Link className={`navigation ${onContact}`} to="contact">
                     Contact
                 </Link>
             </nav>
 
-            <div type="button" className="d-lg-none show-canvas-button ms-5">
+            <div type="button" className="d-lg-none show-canvas-button">
                 <i
                     className="bi bi-list"
                     style={{ fontSize: "65px" }}
@@ -91,7 +93,7 @@ const NavBar = () => {
             </div>
             <Offcanvas
                 style={{
-                    opacity: "0.6",
+                    opacity: "0.9",
                     width: "80%",
                     backgroundColor: "yellow",
                     height: "100vh",
@@ -120,7 +122,7 @@ const NavBar = () => {
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "30px",
+                                fontSize: "27px",
                                 color: "black",
                             }}
                             href="#landing"
@@ -132,7 +134,7 @@ const NavBar = () => {
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "30px",
+                                fontSize: "27px",
                                 color: "black",
                             }}
                             href="#a_propos"
@@ -144,7 +146,7 @@ const NavBar = () => {
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "30px",
+                                fontSize: "27px",
                                 color: "black",
                             }}
                             to="/presentation"
@@ -156,31 +158,31 @@ const NavBar = () => {
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "30px",
+                                fontSize: "27px",
                                 color: "black",
                             }}
                             to="/activite"
                             onClick={handleClose}
                         >
-                            Domaine d'activités
+                            Domaines d'Expertise
                         </Link>
                         <Link
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "30px",
+                                fontSize: "27px",
                                 color: "black",
                             }}
                             to="projets"
                             onClick={handleClose}
                         >
-                            Projets
+                            References
                         </Link>
                         <Link
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "30px",
+                                fontSize: "27px",
                                 color: "black",
                             }}
                             to="contact"

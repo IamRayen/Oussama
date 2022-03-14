@@ -8,7 +8,6 @@ import Footer from './Components/Footer';
 import Contact from './Views/Contact';
 import Presentation from './Views/Presentation';
 import Projets from './Views/Projets';
-import Projet from './Views/Projet';
 import Activite from './Views/Activite';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route path="/presentation" element={<Presentation/>}/>
         <Route path="/projets" element={<Projets/>}></Route>
         <Route path="/activite" element={<Activite/>}></Route>
-        <Route path="/projets/:slug" element={<Projet/>}></Route>
       </Routes>
       <Footer/>
     </div>

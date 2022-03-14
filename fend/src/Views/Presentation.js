@@ -12,38 +12,32 @@ const Presentation = () => {
         {
             image: placeH,
             nom: "Nom",
-            description:
-                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
         },
         {
             image: placeH,
             nom: "Nom",
-            description:
-                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
         },
         {
             image: placeH,
             nom: "Nom",
-            description:
-                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
         },
         {
             image: placeH,
             nom: "Nom",
-            description:
-                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
         },
         {
             image: placeH,
             nom: "Nom",
-            description:
-                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
         },
         {
             image: placeH,
             nom: "Nom",
-            description:
-                "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
+            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
         },
     ];
     // const builder = imageUrlBuilder(myConfiguredSanityClient);
@@ -122,15 +116,19 @@ const Presentation = () => {
         <div className="presentation-wrapper container-fluid ">
             <section className="presentation-generale container d-flex flex-column justify-content-center">
                 <div className="first-part container-fluid d-flex flex-wrap justify-content-around ">
-                    <p className="presentation-text align-self-center lead  ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Mollitia esse fugit, natus sit doloribus, atque hic
-                        libero blanditiis incidunt perferendis accusamus saepe
-                        fuga porro nihil. Libero doloremque quam repellat! Hic!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eius, vero odit. Aperiam, expedita nihil eos voluptatum
-                        soluta assumenda deleniti quisquam molestiae ab odit
-                        placeat praesentium sapiente vitae illo rem doloribus?
+                    <p className="presentation-text align-self-center lead">
+                        Volta Consulting est un{" "}
+                        <strong>bureau d’études techniques </strong>
+                        spécialisé dans la réalisation des études d’exécution
+                        aux services des installateur électriques. <strong>Fort </strong>de son 
+                        <strong> expérience</strong> dans le domaine du bâtiment, il met à votre
+                        service son savoir-faire et ses compétences. Il
+                        intervient sur toute la France et à l’international. Il
+                        accompagne les maitres d’oeuvre, les architectes et les
+                        bureaux d’études sur tous les projets ( des logements,
+                        des hôtels, des ehpads, des groupes scolaires…) aussi
+                        bien sur des opérations de constructions neuves, que de
+                        réhabilitation.
                     </p>
                     <img
                         src={img}
@@ -171,10 +169,16 @@ const Presentation = () => {
                         equipe.map((el) => (
                             <Card
                                 key={Math.random()}
-                                style={{ width: "250px", margin: "5px",backgroundColor:"rgba(0, 33, 214,0.2)" }}
+                                style={{
+                                    width: "250px",
+                                    margin: "5px",
+                                    backgroundColor: "rgba(0, 33, 214,0.2)",
+                                }}
                                 className="Card mx-4 my-2"
                             >
-                                <Card.Text className="desc p-1 lead">{el.description}</Card.Text>
+                                <Card.Text className="desc p-1 lead">
+                                    {el.description}
+                                </Card.Text>
                                 <Card.Img
                                     variant="top"
                                     src={
@@ -182,10 +186,12 @@ const Presentation = () => {
                                         // urlFor(el.image).width(250).height(250).quality(60).url()
                                         el.image
                                     }
-                                    style={{borderRadius:"50%",height:"90%"}}
+                                    style={{
+                                        borderRadius: "50%",
+                                        height: "90%",
+                                    }}
                                     alt="picture"
                                     className="CardImg"
-                                    
                                 />
                                 <Card.Body>
                                     <Card.Title>{el.nom}</Card.Title>
@@ -276,7 +282,7 @@ const Presentation = () => {
                                             style={{
                                                 textDecoration: "none",
                                                 color: "black",
-                                                cursor:"pointer"
+                                                cursor: "pointer",
                                             }}
                                         >
                                             <span>learn more</span>
