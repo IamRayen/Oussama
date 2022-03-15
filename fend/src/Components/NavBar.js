@@ -107,7 +107,7 @@ const NavBar = () => {
                         Menu
                     </Offcanvas.Title>
                 </Offcanvas.Header>
-                <Offcanvas.Body className="offcanvas-body">
+                <Offcanvas.Body className="offcanvas-body pt-5">
                     <ListGroup
                         className="p-2 offcanvas-navigations"
                         style={{
@@ -122,7 +122,7 @@ const NavBar = () => {
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "27px",
+                                fontSize: "25px",
                                 color: "black",
                             }}
                             href="#landing"
@@ -130,23 +130,11 @@ const NavBar = () => {
                         >
                             Accueil
                         </a>
-                        <a
-                            style={{
-                                textDecoration: "none",
-                                fontWeight: "500",
-                                fontSize: "27px",
-                                color: "black",
-                            }}
-                            href="#a_propos"
-                            onClick={handleNavClick}
-                        >
-                            A Propos
-                        </a>
                         <Link
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "27px",
+                                fontSize: "25px",
                                 color: "black",
                             }}
                             to="/presentation"
@@ -158,7 +146,7 @@ const NavBar = () => {
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "27px",
+                                fontSize: "25px",
                                 color: "black",
                             }}
                             to="/activite"
@@ -170,7 +158,7 @@ const NavBar = () => {
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "27px",
+                                fontSize: "25px",
                                 color: "black",
                             }}
                             to="projets"
@@ -182,7 +170,7 @@ const NavBar = () => {
                             style={{
                                 textDecoration: "none",
                                 fontWeight: "500",
-                                fontSize: "27px",
+                                fontSize: "25px",
                                 color: "black",
                             }}
                             to="contact"
