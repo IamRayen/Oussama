@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../images/pdfresizer.com-pdf-crop.svg";
 import { useNavigate } from "react-router-dom";
 import TestinmonialsCarousel from "../Components/Testinmonials-Carousel";
@@ -29,6 +29,9 @@ const LandingPage = () => {
             comment: "Nulla vitae elit libero, a pharetra augue mollisinterdum",
         },
     ];
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="LandingPage ">
@@ -72,15 +75,17 @@ const LandingPage = () => {
                             </button>
                             <h3 className="Check-tem mt-5 ">
                                 Pas sur? consultez nos{" "}
-                                <span className="p-2">Témoignages</span>
+                                <a href="#Testimonials" className="p-2">
+                                    Témoignages
+                                </a>
                                 <i className="bi bi-arrow-down"></i>
                             </h3>
                         </div>
                     </div>
                 </div>
             </section>
-            <section className="Testimonials-wrapper px-2" id="a_propos">
-                <div className="Testimonials d-flex flex-column align-items-center justify-content-center container-fluid  p-md-5 ">
+            <section className="Testimonials-wrapper px-2" id="Testimonials">
+                <div className="Testimonials d-flex flex-column align-items-center justify-content-center container-fluid p-md-5 ">
                     <TestinmonialsCarousel Testimonials={Testimonials} />
                     <div className="test-container d-md-none">
                         {Testimonials.map((el) => {
@@ -95,7 +100,7 @@ const LandingPage = () => {
                                         style={{
                                             width: "150px",
                                             height: "150px",
-                                            borderRadius:"10px"
+                                            borderRadius: "10px",
                                         }}
                                     />
                                     <div className="tests-text ms-2">

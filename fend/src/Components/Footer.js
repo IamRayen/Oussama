@@ -1,12 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
         <div className="footer-basic container-fluid">
-            <footer
-                className="footer d-flex justify-content-around align-items-center flex-wrap flex-sm-nowrap container-xl"
-            >
-                <div className="social ">
+            <footer className="footer d-flex justify-content-around align-items-center flex-wrap flex-sm-nowrap container-xl">
+                <div className="social">
                     <i className="btn btn-lg bi bi-linkedin"></i>
                     <i className="btn btn-lg bi bi-skype"></i>
                     <i className=" btn btn-lg bi bi-facebook"></i>
@@ -15,34 +14,33 @@ const Footer = () => {
                 </div>
                 <ul className="list-inline ">
                     <li className="btn list-inline-item">
-                        <a href="#landing" className="link">
+                        <Link to="/" className="link">
                             Acceuil
-                        </a>
+                        </Link>
                     </li>
+
                     <li className="btn list-inline-item">
-                        <a href="#a_propos" className="link">
-                            A Propos
-                        </a>
-                    </li>
-                    <li className="btn list-inline-item">
-                        <a href="/presentation" className="link">
+                        <Link to="/presentation" className="link">
                             Presentation
-                        </a>
+                        </Link>
                     </li>
+
                     <li className="btn list-inline-item">
-                        <a href="/activite" className="link">
-                            Domaines d'activités
-                        </a>
+                        <Link to="/activite" className="link">
+                            Domaines d'expertise
+                        </Link>
                     </li>
+
                     <li className="btn list-inline-item">
-                        <a href="/projet" className="link">
-                            Projets
-                        </a>
+                        <Link to="/projets" className="link">
+                            References
+                        </Link>
                     </li>
+
                     <li className="btn list-inline-item">
-                        <a href="/contact" className="link">
+                        <Link to="/contact" className="link">
                             Contact
-                        </a>
+                        </Link>
                     </li>
                 </ul>
                 <div className="copyright-wrapper ">

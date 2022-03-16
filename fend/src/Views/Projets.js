@@ -1,129 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Client from "../Client";
+import PreLoader from "../Components/PreLoader";
+import myConfiguredSanityClient from "../Client";
+import imageUrlBuilder from "@sanity/image-url";
+import {useNavigate} from "react-router-dom"
 
 const Projets = () => {
-    const [isLoaded, setIsLoaded] = useState(false);
 
+    const navigate = useNavigate()
 
-    const ghostArray = [
-        {
-            date: "2022",
-            image: {
-                asset: {
-                    url: "https://cdn.sanity.io/images/ziue68m6/production/6eccfeeffdd798efab4ebcbd9b17d2ce563ab4d8-5314x3596.jpg",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk PPPPPPPP",
-            maitre:"loreum Maitre MMMMMMMM",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-        {
-            date: "2005",
-            image: {
-                asset: {
-                    url: "https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk",
-            maitre:"loreum Maitre MMMMMMMM",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-        {
-            date: "2021",
-            image: {
-                asset: {
-                    url: "https://images.unsplash.com/photo-1604011237331-e2a92d399b8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1835&q=80",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk",
-            maitre:"loreum Maitre MMMMMMMM",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-        {
-            date: "2021",
-            image: {
-                asset: {
-                    url: "https://images.unsplash.com/photo-1618522285664-f55ff2b7a1db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk",
-            maitre:"loreum Maitre MMMMMMMM",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-        {
-            date: "2022",
-            image: {
-                asset: {
-                    url: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk",
-            maitre:"loreum Maitre MMMMMMMM",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-        {
-            date: "2022",
-            image: {
-                asset: {
-                    url: "https://source.unsplash.com/1000x900/?nature",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-        {
-            date: "2008",
-            image: {
-                asset: {
-                    url: "https://source.unsplash.com/1600x900/?people",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-        {
-            date: "2016",
-            image: {
-                asset: {
-                    url: "https://source.unsplash.com/500x500/?car",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-        {
-            date: "2015",
-            image: {
-                asset: {
-                    url: "https://source.unsplash.com/1600x900/?love",
-                },
-            },
-            mission: "Loreum Ipsum kkkkkkk",
-            slug: {
-                current: "loreum-ipsum-kkkkkkk",
-            },
-        },
-    ];
+    //Sanity image builder
+    const builder = imageUrlBuilder(myConfiguredSanityClient);
+    const urlFor = (source) => {
+        return builder.image(source);
+    };
 
-    const [projects, setProjects] = useState(ghostArray);
+    //Loading data...
+    const [done, setDone] = useState(false);
+
+    const [projects, setProjects] = useState(null);
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         const request = async () => {
             try {
                 //fetching projects
@@ -139,26 +37,19 @@ const Projets = () => {
                     date,
                 }`);
                 setProjects(data);
-                console.log(data);
+                setDone(true)
             } catch (error) {
                 console.log(error);
             }
         };
         //request data from sanity
         request();
-
-        //change ghostArray to the data when you work with sanity later
-        const ghostArray = true
-        const checkLoad = () => (ghostArray ? setIsLoaded(true) : null);
-
-        checkLoad();
     }, []);
 
 
     return (
         <div className="Projet-wrapper border">
-            {isLoaded && (
-                <div className="Projets container-xl d-flex flex-wrap justify-content-center p-0">
+            {done? <div className="Projets container-xl d-flex flex-wrap justify-content-center p-0">
                     {projects
                         //make the sort by year function
                         .sort((a, b) => {
@@ -167,6 +58,7 @@ const Projets = () => {
                         .map((el) => {
                             return (
                                 <div
+                                    onClick={()=>{navigate("/activite")}}
                                     key={Math.random()}
                                     className=" project-wrapper flex-fill"
                                     style={{
@@ -177,9 +69,9 @@ const Projets = () => {
                                     }}
                                 >
                                     <div
-                                        className="Project "
+                                        className="Project"
                                         style={{
-                                            backgroundImage: `url(${el.image.asset.url})`,
+                                            backgroundImage: `url(${el.image && urlFor(el.image).quality(40).url()})`,
                                             backgroundSize: "cover",
                                             height: "440px",
                                         }}
@@ -195,8 +87,7 @@ const Projets = () => {
                                 </div>
                             );
                         })}
-                </div>
-            )}
+                </div> : <PreLoader/>}
         </div>
     );
 };

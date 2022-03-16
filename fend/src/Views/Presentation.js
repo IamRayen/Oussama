@@ -1,54 +1,28 @@
 import React, { useState, useEffect, useRef } from "react";
 import Client from "../Client";
-// import myConfiguredSanityClient from "../Client";
-// import imageUrlBuilder from "@sanity/image-url";
+import myConfiguredSanityClient from "../Client";
+import imageUrlBuilder from "@sanity/image-url";
 import { Card } from "react-bootstrap";
 import img from "../images/multi-tasking-ceo-handling-multiple-departments-with-ease-1862198.svg";
 import { useSwipeable } from "react-swipeable";
-import placeH from "../images/placeholder.png";
+import PreLoader from "../Components/PreLoader";
 
 const Presentation = () => {
-    const ghostArray = [
-        {
-            image: placeH,
-            nom: "Nom",
-            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
-        },
-        {
-            image: placeH,
-            nom: "Nom",
-            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
-        },
-        {
-            image: placeH,
-            nom: "Nom",
-            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
-        },
-        {
-            image: placeH,
-            nom: "Nom",
-            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
-        },
-        {
-            image: placeH,
-            nom: "Nom",
-            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
-        },
-        {
-            image: placeH,
-            nom: "Nom",
-            description: "lorem ipsum aaaaaaaaaaaa aaaa aaaaaaaaaaaaaaa aaa",
-        },
-    ];
-    // const builder = imageUrlBuilder(myConfiguredSanityClient);
-    // const urlFor = (source) => {
-    //     return builder.image(source);
-    // };
+    
+    //page loading screen
+    const [done, setDone] = useState(false)
 
-    const [equipe, setEquipe] = useState(ghostArray);
-    const [competence, setCompetence] = useState(ghostArray);
+    const builder = imageUrlBuilder(myConfiguredSanityClient);
+    const urlFor = (source) => {
+        return builder.image(source);
+    };
+
+    const [equipe, setEquipe] = useState(null);
+    const [competence, setCompetence] = useState(null);
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+
         const request = async () => {
             try {
                 //fetching skills
@@ -70,6 +44,9 @@ const Presentation = () => {
 
                 setCompetence(data);
                 setEquipe(data2);
+                
+                setDone(true)
+
             } catch (error) {
                 console.log(error);
             }
@@ -113,6 +90,8 @@ const Presentation = () => {
     });
 
     return (
+        <div>
+            {done ?
         <div className="presentation-wrapper container-fluid ">
             <section className="presentation-generale container d-flex flex-column justify-content-center">
                 <div className="first-part container-fluid d-flex flex-wrap justify-content-around ">
@@ -183,8 +162,7 @@ const Presentation = () => {
                                     variant="top"
                                     src={
                                         el.image &&
-                                        // urlFor(el.image).width(250).height(250).quality(60).url()
-                                        el.image
+                                        urlFor(el.image).width(250).height(250).quality(60).url()
                                     }
                                     style={{
                                         borderRadius: "50%",
@@ -267,8 +245,7 @@ const Presentation = () => {
                                         variant="top"
                                         src={
                                             el.image &&
-                                            // urlFor(el.image).width(250).height(250).quality(60).url()
-                                            el.image
+                                            urlFor(el.image).width(250).height(250).quality(60).url()
                                         }
                                         alt="picture"
                                     />
@@ -295,6 +272,7 @@ const Presentation = () => {
                 </div>
             </section>
             <hr />
+        </div> : <PreLoader/>}
         </div>
     );
 };
