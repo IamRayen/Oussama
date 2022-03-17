@@ -14,7 +14,7 @@ const Footer = () => {
                 </div>
                 <ul className="list-inline ">
                     <li className="btn list-inline-item">
-                        <Link to="/" className="link">
+                        <Link to="/accueil" className="link">
                             Acceuil
                         </Link>
                     </li>
