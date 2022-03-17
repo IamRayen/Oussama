@@ -3,11 +3,10 @@ import Client from "../Client";
 import PreLoader from "../Components/PreLoader";
 import myConfiguredSanityClient from "../Client";
 import imageUrlBuilder from "@sanity/image-url";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const Projets = () => {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     //Sanity image builder
     const builder = imageUrlBuilder(myConfiguredSanityClient);
@@ -21,7 +20,7 @@ const Projets = () => {
     const [projects, setProjects] = useState(null);
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
         const request = async () => {
             try {
                 //fetching projects
@@ -37,7 +36,7 @@ const Projets = () => {
                     date,
                 }`);
                 setProjects(data);
-                setDone(true)
+                setDone(true);
             } catch (error) {
                 console.log(error);
             }
@@ -46,48 +45,65 @@ const Projets = () => {
         request();
     }, []);
 
-
     return (
-        <div className="Projet-wrapper border">
-            {done? <div className="Projets container-xl d-flex flex-wrap justify-content-center p-0">
-                    {projects
-                        //make the sort by year function
-                        .sort((a, b) => {
-                            return parseInt(b.date) - parseInt(a.date);
-                        })
-                        .map((el) => {
-                            return (
-                                <div
-                                    onClick={()=>{navigate("/activite")}}
-                                    key={Math.random()}
-                                    className=" project-wrapper flex-fill"
-                                    style={{
-                                        height: "440px",
-                                        width: `${
-                                            Math.random() * (550 - 350) + 350
-                                        }px`,
-                                    }}
-                                >
-                                    <div
-                                        className="Project"
-                                        style={{
-                                            backgroundImage: `url(${el.image && urlFor(el.image).quality(40).url()})`,
-                                            backgroundSize: "cover",
-                                            height: "440px",
-                                        }}
-                                    ></div>
-                                    <h4 className="mission display-6 m-2 p-1">
-                                        {el.mission}
-                                        <br />
-                                        <span className="h5">{el.maitre}</span>
-                                    </h4>
-                                    <p className="date border p-4 m-0">
-                                        {el.date}
-                                    </p>
-                                </div>
-                            );
-                        })}
-                </div> : <PreLoader/>}
+        <div>
+            {done ? (
+                <div className="Projet-wrapper border">
+                    <div className="Projets container-xl d-flex flex-wrap justify-content-center p-0">
+                        {projects &&
+                            projects
+                                //make the sort by year function
+                                .sort((a, b) => {
+                                    return parseInt(b.date) - parseInt(a.date);
+                                })
+                                .map((el) => {
+                                    return (
+                                        <div
+                                            onClick={() => {
+                                                navigate("/activite");
+                                            }}
+                                            key={Math.random()}
+                                            className=" project-wrapper flex-fill"
+                                            style={{
+                                                height: "440px",
+                                                width: `${
+                                                    Math.random() *
+                                                        (550 - 350) +
+                                                    350
+                                                }px`,
+                                            }}
+                                        >
+                                            <div
+                                                className="Project"
+                                                style={{
+                                                    backgroundImage: `url(${
+                                                        el.image &&
+                                                        urlFor(el.image)
+                                                            .quality(40)
+                                                            .url()
+                                                    })`,
+                                                    backgroundSize: "cover",
+                                                    height: "440px",
+                                                }}
+                                            ></div>
+                                            <h4 className="mission display-6 m-2 p-1">
+                                                {el.mission}
+                                                <br />
+                                                <span className="h5">
+                                                    {el.maitre}
+                                                </span>
+                                            </h4>
+                                            <p className="date border p-4 m-0">
+                                                {el.date}
+                                            </p>
+                                        </div>
+                                    );
+                                })}
+                    </div>
+                </div>
+            ) : (
+                <PreLoader />
+            )}
         </div>
     );
 };

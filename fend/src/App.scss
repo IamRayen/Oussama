@@ -9,7 +9,6 @@
 @use "./Styles/Activite";
 @use "./Styles/TestCarousel";
 @use "./Styles/PreLoader";
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body{
     margin: 0;
@@ -18,4 +17,4 @@ body{
 
 .App{
     position: relative;
-}
+    font-family: 'Open Sans', sans-serif;}
