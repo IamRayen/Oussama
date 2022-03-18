@@ -12,7 +12,7 @@ const NavBar = () => {
             ? "trans presentation"
             : window.location.pathname === "/activite"
             ? "trans activites"
-            : window.location.pathname === "/accueil"
+            : window.location.pathname === "/"
             ? "landingPage"
             : "";
     //to make navbar tell you where you are
@@ -29,8 +29,8 @@ const NavBar = () => {
             ? "activites"
             : "";
     const onAccueil =
-            window.location.pathname === "/accueil"
-            ? "accueil"
+            window.location.pathname === "/"
+            ? ""
             : "";
     const onProjets =
             window.location.pathname === "/projets"
@@ -39,7 +39,7 @@ const NavBar = () => {
     //to navigate and go to the desired div in the same time
     const navigate = useNavigate();
     const handleNavClick = async () => {
-        navigate("/accueil");
+        navigate("/");
         handleClose();
     };
 
@@ -60,7 +60,7 @@ const NavBar = () => {
         <div
             className={`navbar container-fluid d-flex justify-content-around align-items-center fixed-top ${scrolled} ${trans}`}
         >
-            <img type="button" onClick={()=>navigate("/accueil")} className="logo" src={logo} alt="IC" />
+            <img type="button" onClick={()=>navigate("/")} className="logo" src={logo} alt="IC" />
 
             <nav className="navigations d-none d-lg-flex flex-wrap justify-content-evenly">
                 <a
