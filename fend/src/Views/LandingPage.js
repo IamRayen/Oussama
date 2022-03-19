@@ -46,7 +46,7 @@ const LandingPage = () => {
                             </h3>
                             <button
                                 onClick={() => navigate("/contact")}
-                                className="contact-us rounded-pill mt-2"
+                                className="contact-us rounded-pill mt-2 mb-2"
                             >
                                 ENVOYER UN E-MAIL
                             </button>

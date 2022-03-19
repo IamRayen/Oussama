@@ -15,7 +15,7 @@
     }
 }
 
-@media screen and (min-width:"992px"){.activite-wrapper {
+@media screen and (min-width:"1200px"){.activite-wrapper {
     position: relative;
     padding-top: 25vh;
     .row {
@@ -83,13 +83,14 @@
 }
 }
 
-@media screen and (max-width:"992px") {
+@media screen and (max-width:"1200px") {
     .activite-wrapper {
         position: relative;
         padding-top: 25vh;
         width: 100%;
         .row {
-            height: 70vh;
+            min-height: 70vh;
+            padding-top: 10px;
             .col {
                 position: relative;
                 display: flex;
