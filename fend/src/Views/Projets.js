@@ -68,8 +68,8 @@ const Projets = () => {
                                                 height: "440px",
                                                 width: `${
                                                     Math.random() *
-                                                        (550 - 350) +
-                                                    350
+                                                        (600 - 400) +
+                                                    400
                                                 }px`,
                                             }}
                                         >
@@ -79,7 +79,7 @@ const Projets = () => {
                                                     backgroundImage: `url(${
                                                         el.image &&
                                                         urlFor(el.image)
-                                                            .quality(40)
+                                                            .quality(60)
                                                             .url()
                                                     })`,
                                                     backgroundSize: "cover",
@@ -94,7 +94,7 @@ const Projets = () => {
                                                 </span>
                                             </h4>
                                             <p className="date border p-4 m-0">
-                                                {el.date}
+                                                {new Date(el.date).getFullYear()}
                                             </p>
                                         </div>
                                     );

@@ -1,34 +1,11 @@
 import React, { useEffect } from "react";
 import logo from "../images/pdfresizer.com-pdf-crop.svg";
 import { useNavigate } from "react-router-dom";
-import TestinmonialsCarousel from "../Components/Testinmonials-Carousel";
 
 const LandingPage = () => {
+
     const navigate = useNavigate();
 
-    const Testimonials = [
-        {
-            key: "1",
-            image: "https://source.unsplash.com/200x200/?technologie",
-            alt: "first",
-            title: "First",
-            comment: "Nulla vitae elit libero, a pharetra augue mollisinterdum",
-        },
-        {
-            key: "2",
-            image: "https://source.unsplash.com/200x200/?race",
-            alt: "second",
-            title: "Second",
-            comment: "Nulla vitae elit libero, a pharetra augue mollisinterdum",
-        },
-        {
-            key: "3",
-            image: "https://source.unsplash.com/200x200/?cars",
-            alt: "third",
-            title: "Third",
-            comment: "Nulla vitae elit libero, a pharetra augue mollisinterdum",
-        },
-    ];
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -63,57 +40,18 @@ const LandingPage = () => {
                                 des installateur électriques.
                             </p>
                         </div>
-                        <div className="Coll d-flex flex-column justify-content-start align-items-center ">
-                            <h3 className="display-6 d-none d-md-block contact-us-call  mt-5">
+                        <div className="Coll d-flex flex-column justify-content-center align-items-center ">
+                            <h3 className="display-6 d-none d-md-block contact-us-call">
                                 Embauchez Nous Maintenant
                             </h3>
                             <button
                                 onClick={() => navigate("/contact")}
-                                className="contact-us rounded-pill mb-5 mt-3"
+                                className="contact-us rounded-pill mt-2"
                             >
                                 ENVOYER UN E-MAIL
                             </button>
-                            <h3 className="Check-tem mt-5 ">
-                                Pas sur? consultez nos{" "}
-                                <a href="#Testimonials" className="p-2">
-                                    Témoignages
-                                </a>
-                                <i className="bi bi-arrow-down"></i>
-                            </h3>
                         </div>
                     </div>
-                </div>
-            </section>
-            <section className="Testimonials-wrapper px-2" id="Testimonials">
-                <div className="Testimonials d-flex flex-column align-items-center justify-content-center container-fluid p-md-5 ">
-                    <TestinmonialsCarousel Testimonials={Testimonials} />
-                    <div className="test-container d-md-none">
-                        {Testimonials.map((el) => {
-                            return (
-                                <div
-                                    key={el.key}
-                                    className=" tests mb-4 p-2  d-flex"
-                                >
-                                    <img
-                                        src={el.image}
-                                        alt={el.alt}
-                                        style={{
-                                            width: "150px",
-                                            height: "150px",
-                                            borderRadius: "10px",
-                                        }}
-                                    />
-                                    <div className="tests-text ms-2">
-                                        <h1>{el.title}</h1>
-                                        <h5>"{el.comment}"</h5>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <p className="test-text d-none d-md-block display-5 ">
-                        TEMOIGNAGES
-                    </p>
                 </div>
             </section>
         </div>

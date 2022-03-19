@@ -17,7 +17,7 @@ const Presentation = () => {
         return builder.image(source);
     };
 
-    const [equipe, setEquipe] = useState(null);
+    // const [equipe, setEquipe] = useState(null);
     const [competence, setCompetence] = useState(null);
 
     useEffect(() => {
@@ -33,17 +33,17 @@ const Presentation = () => {
                 }`);
 
                 //fetching team
-                const data2 = await Client.fetch(`*[_type=="Equipe"]{
-                    image,
-                    nom,
-                    description,
-                    date,
-                    linkedIn,
-                    facebook
-                }`);
+                // const data2 = await Client.fetch(`*[_type=="Equipe"]{
+                //     image,
+                //     nom,
+                //     description,
+                //     date,
+                //     linkedIn,
+                //     facebook
+                // }`);
 
                 setCompetence(data);
-                setEquipe(data2);
+                // setEquipe(data2);
                 
                 setDone(true)
 
@@ -116,13 +116,13 @@ const Presentation = () => {
                     />
                 </div>
                 <div className="second-part container d-flex justify-content-center flex-wrap">
-                    <a
+                    {/* <a
                         href="#Equipe"
                         className="GoToTeamBtn me-lg-5 d-none d-lg-flex"
                     >
                         <strong>Notre Equipe</strong>
                         <i className="bi bi-arrow-down ms-2"></i>
-                    </a>
+                    </a> */}
                     <a
                         href="#Competences"
                         className="GoToTeamBtn ms-lg-5 d-none d-lg-flex"
@@ -132,8 +132,8 @@ const Presentation = () => {
                     </a>
                 </div>
             </section>
-            <hr className="mt-5" />
-            <section
+            {/* <hr className="mt-5" /> */}
+            {/* <section
                 id="Equipe"
                 className="equipe d-flex align-items-center justify-content-center flex-column container"
             >
@@ -195,7 +195,7 @@ const Presentation = () => {
                             </Card>
                         ))}
                 </div>
-            </section>
+            </section> */}
             <hr />
             <section
                 id="Competences"
@@ -271,7 +271,6 @@ const Presentation = () => {
                     </div>
                 </div>
             </section>
-            <hr />
         </div> : <PreLoader/>}
         </div>
     );
