@@ -99,7 +99,7 @@ const Activite = () => {
                                     <Image
                                         roundedCircle
                                         className="d-block w-100"
-                                        src={Img6}
+                                        src={Img7}
                                         alt="Second slide"
                                     />
                                 </Carousel.Item>
