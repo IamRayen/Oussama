@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0ff9e94f.css",
+    "main.js": "/static/js/main.2c833aa5.js",
+    "static/media/tim-trad-BwmOGbS2POw-unsplash-min.jpg": "/static/media/tim-trad-BwmOGbS2POw-unsplash-min.476f5937ace6ac58d545.jpg",
+    "static/media/image9.png": "/static/media/image9.f88b55d82747b748e088.png",
+    "static/media/sergey-zolkin-m9qMoh-scfE-unsplash-min.jpg": "/static/media/sergey-zolkin-m9qMoh-scfE-unsplash-min.d594bd1bc18f6d9e5d92.jpg",
+    "static/media/image13.png": "/static/media/image13.b8ec1531f64e367daacd.png",
+    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.c1d7432ee75fa194e499.woff",
+    "static/media/image6.jpg": "/static/media/image6.97491fc7e63c0ce159a9.jpg",
+    "static/media/concept-of-business-employees-team-working-in-business-environment-work-culture-1862186.svg": "/static/media/concept-of-business-employees-team-working-in-business-environment-work-culture-1862186.ed7e889db4b9297314cac0a5331ad163.svg",
+    "static/media/image11.jpg": "/static/media/image11.4e8987fee99bdaa4edd1.jpg",
+    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.a13b815539b49de48d23.woff2",
+    "static/media/multi-tasking-ceo-handling-multiple-departments-with-ease-1862198.svg": "/static/media/multi-tasking-ceo-handling-multiple-departments-with-ease-1862198.61ab6ff40b4d68d89f0f2eea417439d0.svg",
+    "static/media/image7.jpg": "/static/media/image7.95a36c178a7ee3622541.jpg",
+    "static/media/image14.jpg": "/static/media/image14.b1d7cd7264b53910921e.jpg",
+    "static/media/image2.jpg": "/static/media/image2.eec87bbd2fbd40339ff1.jpg",
+    "static/media/image5.jpg": "/static/media/image5.e5d28881eb3ffb42ff2e.jpg",
+    "static/media/image4.jpg": "/static/media/image4.357e5b828f9d7e1f345c.jpg",
+    "static/media/image1.jpg": "/static/media/image1.d4252806855a2377be5e.jpg",
+    "static/media/image3.jpg": "/static/media/image3.3cd641a4c6ec22747c1c.jpg",
+    "static/media/image10.jpg": "/static/media/image10.211160db7c87f5cf5fae.jpg",
+    "static/media/image8.jpg": "/static/media/image8.93c21f0b6af6ba618e7c.jpg",
+    "static/media/image12.jpg": "/static/media/image12.a98f39d7e6668fe941c4.jpg",
+    "static/media/pdfresizer.com-pdf-crop.svg": "/static/media/pdfresizer.com-pdf-crop.1d99743e9db2d111756b734cd2240efe.svg",
+    "index.html": "/index.html",
+    "main.0ff9e94f.css.map": "/static/css/main.0ff9e94f.css.map",
+    "main.2c833aa5.js.map": "/static/js/main.2c833aa5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0ff9e94f.css",
+    "static/js/main.2c833aa5.js"
+  ]
+}
